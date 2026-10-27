@@ -1,0 +1,451 @@
+/* Gaya utama portfolio Balqis Winda Amaliah (Bootstrap 5.3 + glassmorphism) */
+
+    /* ==========================================================================
+       PENGATURAN DASAR & BACKGROUND
+       ========================================================================== */
+    :root {
+      /* Lapisan gelap di atas gambar latar (makin besar angka terakhir = makin gelap) */
+      --overlay-atas: rgba(5, 12, 18, 0.30);
+      --overlay-bawah: rgba(5, 12, 18, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px; /* Kompensasi tinggi Sticky Navbar */
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #ffffff;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      /* Gambar latar (Futuristic Teal Network Constellation) dengan dark overlay transparan */
+      /* GANTI GAMBAR LATAR DI SINI: path relatif terhadap file CSS ini, '../' artinya naik satu folder (gambar satu folder dengan index.html) */
+      background: linear-gradient(var(--overlay-atas), var(--overlay-bawah)),
+                  url('../ui.png') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+    }
+
+    /* ==========================================================================
+       STYLE GLASSMORPHISM RESMI (Sesuai Spesifikasi Glassmorphism Generator)
+       ========================================================================== */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      color: #ffffff;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    /* Varian Glass Card dengan interaktivitas hover lembut */
+    .glass-card-interactive {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      color: #ffffff;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .glass-card-interactive:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.55);
+      box-shadow: 0 12px 36px 0 rgba(0, 0, 0, 0.35);
+    }
+
+    /* Sub-box di dalam card untuk kontras yang lebih tajam */
+    .glass-inner-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+    }
+
+    /* ==========================================================================
+       1. STICKY TOP NAVBAR DENGAN EFEK BLUR
+       ========================================================================== */
+    .navbar-glass {
+      background: rgba(10, 18, 26, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .navbar-glass .navbar-brand {
+      color: #ffffff;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      font-size: 1.25rem;
+    }
+
+    .navbar-glass .nav-link {
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .navbar-glass .nav-link:hover,
+    .navbar-glass .nav-link:focus {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .navbar-glass .navbar-toggler {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.4rem 0.6rem;
+    }
+
+    .navbar-glass .navbar-toggler:focus {
+      box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.2);
+    }
+
+    /* ==========================================================================
+       TOMBOL & BADGE KUSTOM (SELEKSI GLASS DAN BOOTSTRAP 5.3)
+       ========================================================================== */
+    .btn-glass-primary {
+      background: rgba(13, 110, 253, 0.8);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 0.6rem 1.4rem;
+      transition: all 0.3s ease;
+    }
+    .btn-glass-primary:hover {
+      background: rgba(13, 110, 253, 1);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+    }
+
+    .btn-glass-outline {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 0.6rem 1.4rem;
+      transition: all 0.3s ease;
+    }
+    .btn-glass-outline:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.7);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .badge-glass {
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      font-weight: 500;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    /* ==========================================================================
+       SECTION HEADERS (Teks & Box Judul)
+       ========================================================================== */
+    .section-title-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 0.6rem 2rem;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: capitalize;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ==========================================================================
+       ANIMASI SECTION HOME (LOAD ENTRANCE: FADE-IN & SCALE-UP)
+       ========================================================================== */
+    @keyframes homeEntranceAnimation {
+      0% {
+        opacity: 0;
+        transform: scale(0.92) translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .home-animated-entry {
+      animation: homeEntranceAnimation 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .home-avatar {
+      width: 170px;
+      height: 170px;
+      object-fit: cover;
+      border: 3px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      transition: transform 0.4s ease;
+    }
+    .home-avatar:hover {
+      transform: scale(1.05);
+    }
+
+    .about-avatar {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.4));
+}
+
+    /* ==========================================================================
+       SKILLS & TECHNOLOGY (STATIC SECTION - BEBAS ANIMASI)
+       ========================================================================== */
+    .skill-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      padding: 1.25rem 0.75rem;
+      text-align: center;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .skill-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.22);
+    }
+    .skill-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      color: #ffffff;
+    }
+    .skill-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+
+    /* ==========================================================================
+       PENGALAMAN (HORIZONTAL SCROLLING CONTAINER DENGAN MODERN FLEXBOX)
+       ========================================================================== */
+    .experience-scroll-track {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      padding: 0.75rem 0.25rem 1.5rem 0.25rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+    }
+
+    .experience-scroll-track::-webkit-scrollbar {
+      height: 8px;
+    }
+    .experience-scroll-track::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+    }
+    .experience-scroll-track::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.35);
+      border-radius: 10px;
+    }
+    .experience-scroll-track::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .experience-card-item {
+      flex: 0 0 340px;
+      min-width: 320px;
+      max-width: 380px;
+      scroll-snap-align: start;
+    }
+
+    /* ==========================================================================
+       PROJEK SECTION (2-KOLOM RESPONSIVE CARDS)
+       ========================================================================== */
+    .project-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-img-wrapper {
+      position: relative;
+      overflow: hidden;
+      height: 220px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .project-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .project-img-wrapper img {
+      transform: scale(1.06);
+    }
+
+    /* ==========================================================================
+       ANIMASI SCROLL REVEAL (INTERSECTION OBSERVER TARGETS)
+       Digunakan oleh: About, Projek, dan Kontak
+       ========================================================================== */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(45px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .scroll-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Social icons container */
+    .social-icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      font-size: 1.25rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .social-icon-btn:hover {
+      background: rgba(255, 255, 255, 0.35);
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    }
+
+    /* ==========================================================================
+       TAMBAHAN: LINK NAVBAR AKTIF DAN GAYA TOMBOL BADGE
+       ========================================================================== */
+    .navbar-glass .nav-link.active {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    button.badge-glass {
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.25s ease;
+    }
+    button.badge-glass:hover {
+      background: rgba(255, 255, 255, 0.32);
+    }
+
+    /* ==========================================================================
+       HOME TANPA KOTAK (TULISAN BESAR DI BELAKANG FOTO)
+       ========================================================================== */
+    .home-hero {
+      position: relative;
+      padding-top: clamp(1rem, 4vw, 3rem);
+    }
+    .home-hero-bgtext {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      white-space: nowrap;
+      font-family: 'Anton', 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(4rem, 15vw, 13rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      background-image: linear-gradient(to bottom, rgba(34, 211, 238, 0.65), rgba(34, 211, 238, 0.05) 85%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      user-select: none;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .home-hero-teks {
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+    }
+    .home-hero-sapa {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.2rem;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .home-hero-nama {
+      font-family: 'Anton', 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 400;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+    }
+    .home-hero-peran {
+      font-weight: 700;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .home-hero-deskripsi {
+      max-width: 460px;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    /* Foto hero: berada di depan tulisan besar "PORTOFOLIO" */
+    .home-hero-foto {
+      position: relative;
+      z-index: 1;
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 520px;
+      max-height: 620px;
+      height: auto;
+      object-fit: cover;
+    }
+        /* Khusus foto contoh (hapus class "foto-placeholder" jika sudah pakai PNG transparan) */
+    .home-hero-foto.foto-placeholder {
+      border-radius: 24px;
+      border: 3px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .about-avatar {
+      object-position: top;
+    }
